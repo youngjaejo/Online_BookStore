@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="ISO-8859-1">
+
+    <title>Book Manager</title>
+   <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    </head>
+<body>
+
+    <div>   
+            <div align= "right">   
+             <a class="simpleButton" href="toMain">Back To Main</a>
+             </div>
+            <h1>
+            <div >
+                <class="create">Book Manager
+                
+               
+                
+            </div> 
+            </h1>
+     
+
+
+        <div class="create">
+           
+            <form method="get" action="searchByBook">
+             <a href="new">Create New Product</a>
+            &nbsp;
+            <tr>
+                <td><input type="text" name="keyword"/></td>
+                <input type="submit" name="Search"/>
+            </tr>
+    
+            </form>
+          
+        </div>
+        
+
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ISBN</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Image</th>
+                </tr>
+        
+            </thead>
+                <tbody>
+                    <tr th:each ="book : ${listBook}">
+                        <td th:text="${book.id}">ID</td>
+                        <td th:text="${book.isbn}">ISBN</td>
+                        <td th:text="${book.author}">Author</td>
+                        <td th:text="${book.price}">Price</td>
+                        <td th:text="${book.title}">Title</td>
+                        <td th:text="${book.category}">Category</td>
+                        <td><img width="100" height"100" th:src="@{'/images/'+${book.img_name}}"/></td>
+                       
+                        <td>
+                            <a th:href="@{'/edit/'+${book.id}}">Edit</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a th:href="@{'/delete/'+${book.id}}">delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>

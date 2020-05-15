@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="ISO-8859-1">
+
+    <title>Search Result</title>
+   <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    </head>
+<body>
+
+    <div align="left">
+        <h1>Search Result</h1>
+        
+        <table border="1" cellpadding="10">
+ <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ISBN</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Image</th>
+                </tr>
+        
+            </thead>
+                <tbody>
+                    <tr th:each ="book : ${result}">
+                        <td th:text="${book.id}">ID</td>
+                        <td th:text="${book.isbn}">ISBN</td>
+                        <td th:text="${book.author}">Author</td>
+                        <td th:text="${book.price}">Price</td>
+                        <td th:text="${book.title}">Title</td>
+                        <td th:text="${book.category}">Category</td>
+                        <td><img width="100" height"100" th:src="@{'/images/'+${book.img_name}}"/></td>
+                       
+                        <td>
+                            <a th:href="@{'/edit/'+${book.id}}">Edit</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a th:href="@{'/delete/'+${book.id}}">delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>
