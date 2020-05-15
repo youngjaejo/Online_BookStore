@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="ISO-8859-1">
+
+    <title>YJ BOOK STORE</title>
+   <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    </head>
+<body>
+
+    <div>   
+        <div align= "right">   
+            <a class="CA" href="newC_web">Create Account</a>
+            <a class="signIn" href="/main/login">Sign in</a>
+        </div>
+        <h1>
+            <div >
+                <form method="get" action="search">
+                    <class="create">YJ BOOK STORE
+    
+                    <tr>
+                        <td><input type="text" name="keyword"/></td>
+                        <input type="submit" name="Search" value="Search"/>
+                    </tr>
+            
+                </form>
+            </div>
+               
+        </h1>
+     
+
+    
+        
+
+        <table align="center" id="row"  cellpadding="10" >
+                <tr id="colomn" >
+                </tr>     
+        </table>
+
+
+        <script th:inline="javascript">
+            var book = /*[[${listBook}]]*/[];
+            var colomn=document.getElementById("colomn");
+            var row=  document.getElementById("row");
+            var b= row.rows[0].cells;
+       
+           
+            for(let i=book.length-1; i>=0; i--)//start from last index of book talbe
+            {   if(b.length<4)                                         //        
+                {   var x = row.rows[row.rows.length-1].insertCell(-1);//extend [first row,last column] on book main
+                    x.innerHTML ="<a href='"+book[i]+"'> <input type='image' width='200' height='300' src='/images/"+book[i]+"'></a> "; 
+                    
+                }
+                 else
+                {
+                    var y= row.insertRow(-1).insertCell(0);//extend [last row,first colmn] 
+                    y.innerHTML ="<a href='"+book[i]+"'> <input type='image' width='200' height='300' src='/images/"+book[i]+"'></a> "; 
+                    b= row.rows[row.rows.length-1].cells;//b point last row
+                }
+            }
+        </script>
+       
+    </div>
+</body>
+</html>

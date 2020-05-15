@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="ISO-8859-1">
+
+    <title>YJ BOOK STORE</title>
+   <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    </head>
+<body>
+
+    <div>   
+        <div align= "right">   
+            <a class="CA" href="new">Create Account</a>
+            <a class="signIn" href="">Sign in</a>
+        </div>
+        <h1>
+            <div >
+                <form method="get" action="search">
+                    <class="create">YJ BOOK STORE
+    
+                    <tr>
+                        <td><input type="text" name="keyword"/></td>
+                        <input type="submit" name="Search" value="Search"/>
+                    </tr>
+            
+                </form>
+            </div>
+               
+        </h1>
+     
+
+    
+        
+
+        <table id="row"  cellpadding="10" >
+            
+                <tr id="colomn"  th:each ="book : ${listBook}">
+                      <td><img width="130" height="130" th:src="@{'/images/'+${book.img_name}}"/></td>  
+                </tr>
+                
+        </table>
+        
+  <button onclick="myFunction()">Try it</button>
+
+        <script>
+        function myFunction() {
+            /*var a=colomn.cells.length;
+            var colomn = document.getElementById("colomn");*/
+            
+            var row=  document.getElementById("row");
+            var b= row.rows[0].cells;
+            if(b.length<4)
+            {   var x = row.rows[0].insertCell(0);
+                x.innerHTML =b.length;
+            }
+            else
+            {
+                var y= row.insertRow(0).insertCell(0);
+                y.innerHTML =b.length;
+            }
+            
+         
+            
+        }
+        </script>
+    </div>
+</body>
+</html>
