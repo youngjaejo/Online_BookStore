@@ -23,7 +23,7 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 			throws IOException {
 
 		String targetUrl = determineTargetUrl(authentication);
-
+		System.out.println(targetUrl);
 		if (response.isCommitted()) {
 			return;
 		}
@@ -36,14 +36,14 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 		
 		// Fetch the roles from Authentication object
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-		System.out.println(authorities);
+		System.out.println(authentication);
 		List<String> roles = new ArrayList<String>();
 		for (GrantedAuthority a : authorities) {
 			roles.add(a.getAuthority());
 		}
 		
 		// check user role and decide the redirect URL
-		if (roles.contains("ADMIN_USER")) {
+		if (roles.contains("ADMIN_USER") || roles.contains("SUPER_USER")) {
 			url = "/main/mainpage";
 		} 
 		else if (roles.contains("SITE_USER")) {

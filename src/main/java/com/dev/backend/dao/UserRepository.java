@@ -12,7 +12,7 @@ import com.dev.backend.model.*;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     
-    @Query(value="select c.email from User c where c.email like %:keyword%")
-    public String findByEmail(@Param("keyword") String keyword);
+    @Query(value="select u.email from User u where u.email like %:keyword% ")
+    public String findByEmail(@Param("keyword") String email);
   
     }

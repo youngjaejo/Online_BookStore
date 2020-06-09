@@ -37,6 +37,7 @@ public class UserServiceImp implements UserService {
 		user.setPassword(encoder.encode(user.getPassword()));
 		user.setStatus("VERIFIED");
 		Role userRole = roleRepository.findByRole("ADMIN_USER");
+		System.out.println(userRole);
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
 		

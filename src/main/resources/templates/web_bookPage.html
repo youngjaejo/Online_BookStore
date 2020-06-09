@@ -6,27 +6,55 @@
    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
     </head>
 <body>
-
-    <div>   
-        <div align= "right">   
-            <a class="CA" href="newC">Create Account</a>
-            <a class="signIn" href="">Sign in</a>
-        </div>
+<div>   
+     <div>  
+     
         <h1>
             <div >
                 <form method="get" action="search">
-                    <a href="toWebMain">YJ BOOK STORE</a>
+                &nbsp;&nbsp;
+                    <class="create">YJ BOOK STORE
     
                     <tr>
                         <td><input type="text" name="keyword"/></td>
                         <input type="submit" name="Search" value="Search"/>
+                  
                     </tr>
-            
+                    
+                
                 </form>
-            </div>    
+                
+                <div class="dropdown">
+                    <p id="name" class="dropbtn"></p>
+                    <div class="dropdown-content">
+                        <a href="/main/login">Sign in</a>
+                        <a href="newC_web">Create Account</a>
+                        <a href="/logout">Log Out</a>
+                    </div>
+                </div>
+                       
+            </div>
+          
         </h1>
-    </div>
-    <br><br><br>
+        
+
+
+             <!--button class="CA2" onclick="window.location.href='newC_web';">Create Account</button-->
+            <a id="name"></p> 
+            
+            <script>
+            var x=document.getElementById("name").innerHTML = "Hello, [[${#httpServletRequest.remoteUser}]]";
+            if(x=="Hello, "){
+                x=document.getElementById("name").innerHTML = "Hello, Sign in";
+            }
+            </script>
+
+           
+           <!--form th:action="@{/logout}" method="post">
+                <input type="submit" value="Log out" />
+            </form-->
+        </div> 
+        <br><br><br>
 <div th:each="book: ${listBook}" align="center" > 
     <div id="div1">
        
@@ -40,6 +68,10 @@
         
         <p class="bookPage1">by <td th:text="${book.Author}"/></p>
         <p><font size="5.5">price: $<td th:text="${book.Price}"/></font></p>
+        <div class="form-group">
+         <button type="submit" class="simpleButton">Buy</button>
+         <button type="submit" class="simpleButton">Add</button>
+        </div>
     </div>
 </div>
 </body>       

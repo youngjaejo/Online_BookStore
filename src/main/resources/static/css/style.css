@@ -17,21 +17,10 @@
     padding: 2px 0px 2px 5px;
     width: 203px;
 }
-.button {
-     border: none;
-  background-color: inherit;
-  
-  font-size: 16px;
-  cursor: pointer;
-  display: inline-block;
-  text-align: left;
-  border-radius: 8px;
-
-  }
 
   
 .simpleButton {
-    position: absolute;
+    position: relative;
     color: #555558;
     font-size: 16px;
     right: 10px;
@@ -45,11 +34,30 @@
     right: 10px;
     
 }
+.button {
+    border: none;
+ background-color: inherit;
+ 
+ font-size: 16px;
+ cursor: pointer;
+ display: inline-block;
+ text-align: left;
+ border-radius: 8px;
+
+ }
+
 .CA {
-    position: relative;
     color: #555558;
+    float:right;
     font-size: 16px;
     right: 10px;
+    
+}
+.CA2 {
+    float:right;
+    color: #555558;
+    font-size: 16px;
+    left: 10px;
     
 }
 .main {
@@ -76,3 +84,42 @@
     display: inline-block;
     
 }
+
+.dropbtn {
+  background-color:skyblue;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  right:400px;
+  float: right;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  font-size: 16px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+

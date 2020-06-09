@@ -3,30 +3,60 @@
     <head>
     <meta charset="ISO-8859-1">
 
-    <title>YJ BOOK STORE</title>
-   <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+        <title>YJ BOOK STORE</title>
+        <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
     </head>
 <body>
 
-    <div>   
-        <div align= "right">   
-            <a class="CA" href="newC_web">Create Account</a>
-            <a class="signIn" href="/main/login">Sign in</a>
-        </div>
+    <div>  
+     
         <h1>
             <div >
                 <form method="get" action="search">
+                &nbsp;&nbsp;
                     <class="create">YJ BOOK STORE
     
                     <tr>
                         <td><input type="text" name="keyword"/></td>
                         <input type="submit" name="Search" value="Search"/>
+                  
                     </tr>
-            
+                    
+                
                 </form>
+                
+                <div class="dropdown">
+                    <p id="name" class="dropbtn"></p>
+                    <div class="dropdown-content">
+                        <a href="/main/login">Sign in</a>
+                        <a href="newC_web">Create Account</a>
+                        <a href="/logout">Log Out</a>
+                    </div>
+                </div>
+                       
             </div>
-               
+          
         </h1>
+        
+
+
+             <!--button class="CA2" onclick="window.location.href='newC_web';">Create Account</button-->
+            <a id="name"></p> 
+            
+            <script>
+            var x=document.getElementById("name").innerHTML = "Hello, [[${#httpServletRequest.remoteUser}]]";
+            if(x=="Hello, "){
+                x=document.getElementById("name").innerHTML = "Hello, Sign in";
+            }
+            </script>
+
+           
+           <!--form th:action="@{/logout}" method="post">
+                <input type="submit" value="Log out" />
+            </form-->
+        </div> 
+    
+        
      
 
     

@@ -55,7 +55,8 @@
                 <tbody>
                     <tr th:each ="listUsers : ${listUsers}">
                         <td th:text="${listUsers.id}">ID</td>
-                        <td th:text="${listUsers.name}">First Name</td>
+                        <td th:text="${listUsers.email}">Email</td>
+                        <td th:text="${listUsers.firstName}">First Name</td>
                         <td th:text="${listUsers.lastName}">Last Name</td>
                         <td th:text="${listUsers.roles}">roles</td>
                         <td>

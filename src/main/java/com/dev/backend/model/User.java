@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -50,6 +51,7 @@ public class User {
 	//4/12 ended here next-> web page printout roles
 	@ManyToMany()
 	@JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
+	// @JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
 	private Set<Role> roles;
 	
 	public int getId() {
@@ -100,8 +102,11 @@ public class User {
 		this.status = status;
 	}
 
+	// public String getRoles() {
+	// 	return roles.iterator().next().getRole(); 
+	// }
 	public String getRoles() {
-		return roles.iterator().next().getRole(); 
+		return roles.iterator().next().getRole();
 	}
 	public Role getRole() {
 		return roles.iterator().next(); 
@@ -109,6 +114,7 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+		System.out.println(roles);
 	}
 	
 }

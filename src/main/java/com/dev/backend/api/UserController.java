@@ -110,10 +110,10 @@ public abstract class UserController{
    
     public String viewCustomPage(Model model)
     {
-     List<User> listUsers=(List<User>)dao.findAll();
-     
+      List<User> listUsers=(List<User>)dao.findAll();
+      System.out.println(listUsers.size());
       model.addAttribute("listUsers", listUsers);
-    return "user_main";
+      return "user_main";
     }
     @RequestMapping("/newC")
     public String showNewUserFrom(Model model){
@@ -142,6 +142,7 @@ public abstract class UserController{
       else {
         userService.saveUser(user);
         modelAndView.addObject("successMessage", "User is registered successfully!");
+       
       }
       modelAndView.addObject("user", new User());
       modelAndView.setViewName("customer_new");
@@ -168,7 +169,24 @@ public abstract class UserController{
       modelAndView.setViewName("customer_new_admin");
       return modelAndView;
     }
-
+    @RequestMapping(value="/editUser", method=RequestMethod.POST)
+    public ModelAndView editUser(@Valid User user, BindingResult bindingResult, ModelMap modelMap) {
+      ModelAndView modelAndView = new ModelAndView();
+      // Check for the validations
+      if(bindingResult.hasErrors()) {
+        modelAndView.addObject("successMessage", "Please correct the errors in form!");
+        modelMap.addAttribute("bindingResult", bindingResult);
+      }
+      // we will save the user if, no binding errors
+      else {
+        userService.saveUser(user);
+        modelAndView.addObject("successMessage", "User is edited successfully!");
+       
+      }
+      modelAndView.addObject("user", new User());
+      modelAndView.setViewName("customer_new");
+      return modelAndView;
+    }
     //     @RequestMapping(value = "/saveC",method=RequestMethod.POST)
 //     public String saveUser(@ModelAttribute("customer") Customer customer)
 //     {   
@@ -190,8 +208,8 @@ public abstract class UserController{
     @RequestMapping("/editC/{user_id}")
     public ModelAndView showEditUserFrom(@PathVariable(name="user_id") int user_id){
       ModelAndView mav=new ModelAndView("customer_edit");
-      User customer= dao.findById(user_id).get();
-      mav.addObject("customer", customer);
+      User user= dao.findById(user_id).get();
+      mav.addObject("user", user);
       return mav;
     }
     @RequestMapping("/deleteC/{user_id}")
