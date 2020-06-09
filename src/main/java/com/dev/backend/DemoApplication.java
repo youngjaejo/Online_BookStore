@@ -11,7 +11,3 @@ public class DemoApplication {
 	}
 
 }
-/*
-I changed User model from new one
-next step is to connect with create new user with regester
-*/ 

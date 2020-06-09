@@ -14,17 +14,3 @@ public class WebMvcConfig implements WebMvcConfigurer{
 	}
 }
 
-/* https://stackoverflow.com/questions/47552835/the-type-webmvcconfigureradapter-is-deprecated */
-/*
-	@Configuration
-	public class WebMvcConfig extends WebMvcConfigurerAdapter {
-	
-		@Bean
-		public BCryptPasswordEncoder passwordEncoder() {
-			BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-			return bCryptPasswordEncoder;
-		}
-	
-	}
-
-*/
