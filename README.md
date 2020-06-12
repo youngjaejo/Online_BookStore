@@ -20,3 +20,5 @@ This is an online bookstore created using the java spring boot framework, create
    - localhost:8080/webHome/webMain
      - localhost:8080/webHome/{img_name} 
      - localhost:8080/webHome/newC_web
+ When an admin user adds a book to the admin side, data is stored in Mysql through Hibernate and the book information is viewed from the user side.
+
