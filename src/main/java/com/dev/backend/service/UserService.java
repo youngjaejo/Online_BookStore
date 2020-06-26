@@ -7,4 +7,5 @@ public interface UserService {
 	public void saveUser(User user);
 	public void saveAdminUser(User user);
 	public boolean isUserAlreadyPresent(User user);
+	public void saveAtCart(User user,Book book);
 }

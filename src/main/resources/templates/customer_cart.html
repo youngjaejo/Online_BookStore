@@ -1,0 +1,99 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="ISO-8859-1">
+
+    <title>YJ BOOK STORE</title>
+   <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    </head>
+<body>
+<div>   
+     <div>  
+     
+        <h1>
+            <div >
+                <form method="get" action="search">
+                &nbsp;&nbsp;
+                    <class="create">YJ BOOK STORE
+    
+                    <tr>
+                        <td><input type="text" name="keyword"/></td>
+                        <input type="submit" name="Search" value="Search"/>
+                  
+                    </tr>
+                    
+                
+                </form>
+                <div class="dropdown">
+                <p id="name" class="dropbtn"></p>
+                <div id="sign"class="dropdown-content">
+                
+                        <!--a href="/main/login">Sign in</a>
+                        <a href="newC_web">Create Account</a>
+                        <a href="/logout">Log Out</a-->
+                           
+                  
+
+                    </div>
+                </div>
+                       
+            </div>
+                       
+            </div>
+          
+        </h1>
+        
+
+           <!--form th:action="@{/logout}" method="post">
+                <input type="submit" value="Log out" />
+            </form-->
+        </div> 
+        <br><br><br>
+<div th:each="book: ${listBook}" align="center" > 
+    <div id="div1">
+       
+        <img width="250" height="250" th:src="@{'/images/'+${book.img_name}}"/>
+        
+    </div>
+    <div id="div2" align="left" class="Top"> 
+        <h1 >
+        <td  th:text="${book.title}"/>
+        </h1>
+        
+        <p class="bookPage1">by <td th:text="${book.Author}"/></p>
+        <p><font size="5.5">price: $<td th:text="${book.Price}"/></font></p>
+        <div class="form-group">
+            <a id="bEvent" class="simpleButton"> <input type="button" value="Buy"></a>
+            <a id="bEvent2" class="simpleButton"> <input type="button" value="add"></a>
+            
+        </div>
+        <p id="msg"></p>
+        <p id="msg2"></p>
+
+    </div>
+    
+</div>
+   
+</body>
+            <script th:inline="javascript">
+            
+                        var user=/*[[${user_name}]]*/;
+                        var x=document.getElementById("name").innerHTML = "Hello, "+ user;
+                        if(x!="Hello, "){
+                            document.getElementById("sign").innerHTML = "<a href='/main/login'>User information</a>"+
+                                                                        " <a href='/logout'>Log Out</a>";
+                          
+                                                                    }
+                    
+                                                                    
+                        //add cart funtion
+                        if(x=="Hello, anonymousUser"){
+                            x=document.getElementById("name").innerHTML = "Hello, Sign in";
+                            document.getElementById("sign").innerHTML = "<a href='/main/login'>Sign in</a>"+ 
+                                                                        "<a href='newC_web'>Create Account</a>";
+             
+                        
+                        }
+                        
+    </script>  
+
+</html>

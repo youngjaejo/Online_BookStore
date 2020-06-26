@@ -111,7 +111,7 @@ public abstract class UserController{
     @RequestMapping("/deleteC/{user_id}")
     public String deleteUser(@PathVariable(name="user_id") int user_id){
       dao.deleteById(user_id);
-      return "redirect:/main/customer_new";
+      return "redirect:/main/customer";
     }
 
     @RequestMapping("/toMain")
@@ -119,7 +119,27 @@ public abstract class UserController{
     
       return "redirect:/main/mainpage";
   } 
+  @RequestMapping("/searchByemail")
+  public ModelAndView searchByEmail(@RequestParam String keyword){
+    ModelAndView mav= new ModelAndView("user_search");
+    List<User> result=dao.findByEmails(keyword);
+    mav.addObject("result", result);
+    return mav;
+  }
+  @RequestMapping("/searchByLName")
+  public ModelAndView searchByFName(@RequestParam String keyword){
+    ModelAndView mav= new ModelAndView("user_search");
+    List<User> result=dao.findByLName(keyword);
+    mav.addObject("result", result);
+    return mav;
+  }
+  @RequestMapping("/searchByRole")
+  public ModelAndView searchByRole(@RequestParam String keyword){
+    ModelAndView mav= new ModelAndView("user_search");
+    List<User> result=dao.findByRoles(keyword);
   
-  
+    mav.addObject("result", result);
+    return mav;
+  }
   }
 

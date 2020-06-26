@@ -15,27 +15,57 @@
             <h1>
             <div >
                 <class="create">Book Manager
-                
-               
-                
+                   
             </div> 
             </h1>
+        <div class>
+           
+      
+            <div >
+                <form id="search" method="get" >
+                    <a href="new">Create New Product</a>
+                    &nbsp;
+                    <select onchange="selected(this.value)">
+                        <option value="search_by" >Search by</option>
+                        <option value="isbn" >ISBN</option>
+                        <option value="author" >Author</option>
+                        <option value="title">Title</option>
+                        <option value="category">Category</option>
+                    </select>
+                    <td><input type="text" name="keyword"/></td>
+                    <button type="submit" >Search</button>
+                </form>
+            </div>
      
+            <script>
+              function selected(s){
+                if (s=='isbn'){
+                 document.getElementById('search').action = "searchByIsbn"; 
+                }
+                else if(s=='title')
+                    {document.getElementById('search').action = "searchByTitle"; }
+                 else if(s=='author')
+                     {document.getElementById('search').action = "searchByAuthor"; }
+                 else if(s=='category')
+                 {document.getElementById('search').action = "searchByCategory"; }
+                }
+            </script>
 
+       </div>
+        
 
-        <div class="create">
+        <!--div class="create">
            
             <form method="get" action="searchByBook">
-             <a href="new">Create New Product</a>
-            &nbsp;
-            <tr>
-                <td><input type="text" name="keyword"/></td>
-                <input type="submit" name="Search"/>
-            </tr>
-    
+                <a href="new">Create New Product</a>
+                &nbsp;
+                <tr>
+                    <td><input type="text" name="keyword"/></td>
+                    <input type="submit" name="Search"/>
+                </tr>
             </form>
           
-        </div>
+        </div-->
         
 
         <table border="1" cellpadding="10">
@@ -48,6 +78,7 @@
                     <th>Title</th>
                     <th>Category</th>
                     <th>Image</th>
+                    <th>Quantity</th>
                 </tr>
         
             </thead>
@@ -60,7 +91,7 @@
                         <td th:text="${book.title}">Title</td>
                         <td th:text="${book.category}">Category</td>
                         <td><img width="100" height"100" th:src="@{'/images/'+${book.img_name}}"/></td>
-                       
+                        <td th:text="${book.quantity}">Quabtity</td>
                         <td>
                             <a th:href="@{'/edit/'+${book.id}}">Edit</a>
                             &nbsp;&nbsp;&nbsp;&nbsp;

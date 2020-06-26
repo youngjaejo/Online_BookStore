@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.dev.backend.model.Book;
 import com.dev.backend.model.Role;
 import com.dev.backend.model.User;
 import com.dev.backend.dao.UserRepository;
@@ -40,12 +41,19 @@ public class UserServiceImp implements UserService {
 		System.out.println(userRole);
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
+	}
+	@Override
+	public void saveAtCart(User user,Book book) {
+		System.out.println(user.getEmail());
+		System.out.println(book.getTitle());
+		user.setCart((new HashSet<Book>(Arrays.asList(book))));
+		userRepository.save(user);
 		
 	}
 	@Override
 	public boolean isUserAlreadyPresent(User user) {
 	
-		String email=userRepository.findByEmail(user.getEmail());
+		User email=userRepository.findByEmail(user.getEmail());
 		if(email!=null)
 		return true;
 		else

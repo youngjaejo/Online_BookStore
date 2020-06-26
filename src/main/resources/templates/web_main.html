@@ -7,49 +7,50 @@
         <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
     </head>
 <body>
-
-    <div>  
-     
-        <h1>
-            <div >
-                <form method="get" action="search">
-                &nbsp;&nbsp;
-                    <class="create">YJ BOOK STORE
-    
-                    <tr>
-                        <td><input type="text" name="keyword"/></td>
-                        <input type="submit" name="Search" value="Search"/>
-                  
-                    </tr>
-                    
-                
-                </form>
-                
-                <div class="dropdown">
-                    <p id="name" class="dropbtn"></p>
-                    <div class="dropdown-content">
-                        <a href="/main/login">Sign in</a>
-                        <a href="newC_web">Create Account</a>
-                        <a href="/logout">Log Out</a>
-                    </div>
-                </div>
-                       
+    <header>
+        
+        <div class="nav-belt">
+            <div class="nav-left">
+                <h1>YJ BOOK STORE</h1>
             </div>
-          
-        </h1>
+             <div class="dropdown">
+                <p id="name" class="dropbtn"></p>
+                <div id="sign"class="dropdown-content">
+                                    
+                                    <!--a href="/main/login">Sign in</a>
+                                    <a href="newC_web">Create Account</a>
+                                    <a href="/logout">Log Out</a-->
+                </div>
+            </div>
+            <div class="nav-searchbar">
+                <form id="search" method="get">      
+                    &nbsp;&nbsp;        
+                    <select onchange="selected(this.value)">
+                        <option value="search_by" >Search by</option>
+                        <option value="isbn" >ISBN</option>
+                        <option value="author" >Author</option>
+                        <option value="title">Title</option>
+                        <option value="category">Category</option>
+                    </select>                   
+                    <input type="text" name="keyword"/>
+                    <input type="submit" name="Search" value="Search"/>                           
+                </form>
+            </div>    
+
+           
+            
+        </div>
+            
+               
+        
+
+    </header>
         
 
 
              <!--button class="CA2" onclick="window.location.href='newC_web';">Create Account</button-->
-            <a id="name"></p> 
-            
-            <script>
-            var x=document.getElementById("name").innerHTML = "Hello, [[${#httpServletRequest.remoteUser}]]";
-            if(x=="Hello, "){
-                x=document.getElementById("name").innerHTML = "Hello, Sign in";
-            }
-            </script>
-
+        <a id="name"></p> 
+    
            
            <!--form th:action="@{/logout}" method="post">
                 <input type="submit" value="Log out" />
@@ -69,27 +70,55 @@
 
 
         <script th:inline="javascript">
-            var book = /*[[${listBook}]]*/[];
+            var bookImg = /*[[${listImg}]]*/[];
+            var bookTitle = /*[[${listTitle}]]*/[];
             var colomn=document.getElementById("colomn");
             var row=  document.getElementById("row");
             var b= row.rows[0].cells;
        
            
-            for(let i=book.length-1; i>=0; i--)//start from last index of book talbe
+            for(let i=bookImg.length-1; i>=0; i--)//start from last index of book talbe
             {   if(b.length<4)                                         //        
                 {   var x = row.rows[row.rows.length-1].insertCell(-1);//extend [first row,last column] on book main
-                    x.innerHTML ="<a href='"+book[i]+"'> <input type='image' width='200' height='300' src='/images/"+book[i]+"'></a> "; 
+                    x.innerHTML ="<a href='"+bookImg[i]+"'> <input type='image' width='200' height='300' src='/images/"+bookImg[i]+"'>"+
+                                "<p>"+bookTitle[i]+"</p></a>"; 
                     
                 }
                  else
                 {
                     var y= row.insertRow(-1).insertCell(0);//extend [last row,first colmn] 
-                    y.innerHTML ="<a href='"+book[i]+"'> <input type='image' width='200' height='300' src='/images/"+book[i]+"'></a> "; 
+                    y.innerHTML ="<a href='"+bookImg[i]+"'> <input type='image' width='200' height='300' src='/images/"+bookImg[i]+"'>"+
+                                 "<p>"+bookTitle[i]+"</p></a>"; 
                     b= row.rows[row.rows.length-1].cells;//b point last row
                 }
             }
         </script>
        
-    </div>
+   
 </body>
+    <script>
+        function selected(s)//not done{
+            if (s=='isbn'){
+            document.getElementById('search').action = "searchByIsbn"; 
+            }
+            else if(s=='title')
+                {document.getElementById('search').action = "searchByTitle"; }
+            else if(s=='author')
+                {document.getElementById('search').action = "searchByAuthor"; }
+            else if(s=='category')
+                {document.getElementById('search').action = "searchByCategory"; }
+            }
+           
+      </script>          
+    <script>
+            var x=document.getElementById("name").innerHTML = "Hello, [[${#httpServletRequest.remoteUser}]]";
+            if(x!="Hello, "){
+                document.getElementById("sign").innerHTML = "<a href='/main/login'>User information</a>"+
+                                                                        " <a href='/logout'>Log Out</a>";}
+                if(x=="Hello, "){
+                    x=document.getElementById("name").innerHTML = "Hello, Sign in";
+                    document.getElementById("sign").innerHTML = "<a href='/main/login'>Sign in</a>"+ 
+                                                                "<a href='newC_web'>Create Account</a>";
+                        }
+    </script>
 </html>

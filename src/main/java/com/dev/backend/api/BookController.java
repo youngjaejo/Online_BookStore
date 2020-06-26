@@ -84,13 +84,40 @@ public class BookController extends UserController{
       return "redirect:/main/book";
     }
     @RequestMapping("/searchByBook")
-    public ModelAndView search(@RequestParam String keyword){
+    public ModelAndView searchByBook(@RequestParam String keyword){
       ModelAndView mav= new ModelAndView("book_search");
-      List<Book> result=dao.search(keyword);
+      List<Book> result=dao.searchByBook(keyword);
       mav.addObject("result", result);
       return mav;
     }
-     
+    @RequestMapping("/searchByIsbn")
+    public ModelAndView searchByIsbn(@RequestParam String keyword){
+      ModelAndView mav= new ModelAndView("book_search");
+      List<Book> result=dao.searchByIsbn(keyword);
+      mav.addObject("result", result);
+      return mav;
+    }
+    @RequestMapping("/searchByTitle")
+    public ModelAndView searchByTitle(@RequestParam String keyword){
+      ModelAndView mav= new ModelAndView("book_search");
+      List<Book> result=dao.searchByTitle(keyword);
+      mav.addObject("result", result);
+      return mav;
+    }
+    @RequestMapping("/searchByCategory")
+    public ModelAndView searchByCategory(@RequestParam String keyword){
+      ModelAndView mav= new ModelAndView("book_search");
+      List<Book> result=dao.searchByCategory(keyword);
+      mav.addObject("result", result);
+      return mav;
+    }
+    @RequestMapping("/searchByAuthor")
+    public ModelAndView searchByAuthor(@RequestParam String keyword){
+      ModelAndView mav= new ModelAndView("book_search");
+      List<Book> result=dao.searchByAuthor(keyword);
+      mav.addObject("result", result);
+      return mav;
+    }
     @RequestMapping("/toMain")
     public String toMain(){
     

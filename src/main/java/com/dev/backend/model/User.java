@@ -1,5 +1,7 @@
 package com.dev.backend.model;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -53,6 +56,9 @@ public class User {
 	@JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
 	// @JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
 	private Set<Role> roles;
+	@ManyToMany()
+	@JoinTable(name = "user_cart", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
+	private Set<Book> cart;
 	
 	public int getId() {
 		return id;
@@ -102,19 +108,70 @@ public class User {
 		this.status = status;
 	}
 
-	// public String getRoles() {
-	// 	return roles.iterator().next().getRole(); 
-	// }
+
 	public String getRoles() {
-		return roles.iterator().next().getRole();
+		
+		String result="SITEUSER";
+	
+		Iterator<Role> role=roles.iterator();
+			while(role.hasNext()){
+				Role x=role.next();
+			
+				
+				if((x.getRole()).compareTo("SUPER_USER") == 0)
+				{result="SUPER USER";
+					break;}
+				else if((x.getRole()).compareTo("ADMIN_USER")==0)
+				{result= "ADMIN USER";}
+				System.out.println(1);
+		
+				
+
+
+			}
+			return result;
+		
+
+		
+		
 	}
-	public Role getRole() {
-		return roles.iterator().next(); 
-	}
+	
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 		System.out.println(roles);
 	}
 	
+	public String getCart() {
+		
+		String result="SITE_USER";
+	
+		// Iterator<Role> role=roles.iterator();
+		// 	while(role.hasNext()){
+		// 		Role x=role.next();
+			
+				
+		// 		if((x.getRole()).compareTo("SUPER_USER") == 0)
+		// 		{result="SUPER USER";
+		// 			break;}
+		// 		else if((x.getRole()).compareTo("ADMIN_USER")==0)
+		// 		{result= "ADMIN USER";}
+		// 		System.out.println(1);
+		
+				
+
+
+		// 	}
+			return result;
+		
+
+		
+		
+	}
+	
+
+	public void setCart(Set<Book> cart) {
+		this.cart.add(cart.iterator().next());
+		
+	}
 }

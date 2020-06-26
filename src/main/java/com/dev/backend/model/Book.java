@@ -7,14 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name = "book")
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)
     private int id;
     private String isbn;
@@ -23,9 +21,18 @@ public class Book {
     private double price;
     private String category;
     private String img_name;
+    private int quantity;
 
     public Book() {
 
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getImg_name() {
@@ -76,5 +83,5 @@ public class Book {
     public void setTitle(String title) {
         this.title = title;
     }
-   
+    
  }
