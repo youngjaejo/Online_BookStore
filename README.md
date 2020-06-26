@@ -6,6 +6,7 @@
     - Thymeleaf
     - Spring security
     - Spring Data JPA
+    - CSS
  - Mysql
  - VS Code
 # Online BookStore
@@ -22,5 +23,5 @@ Security.
      - localhost:8080/webHome/{img_name} 
      - localhost:8080/webHome/newC_web  
       
-
-
+# Reletional Database
+  
