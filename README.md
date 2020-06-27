@@ -35,6 +35,6 @@ Security.
 	@JoinTable(name = "user_cart", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
 	private Set<Book> cart;
  ```
+![RDBMS Diagram](https://user-images.githubusercontent.com/44520516/85910198-7b6d5780-b7d2-11ea-8d5e-1ff731aac169.png)
 
-![RDBMS Diagram](https://user-images.githubusercontent.com/44520516/85909763-4bbd5000-b7d0-11ea-8e82-61bda7aee008.png)
 
