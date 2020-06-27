@@ -25,6 +25,17 @@ Security.
      - localhost:8080/webHome/newC_web  
   
   # Reletional Database
-  
+ Decleared joined tanble on backend server
+ ```java
+ @OneToMany()
+	@JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
+	private Set<Role> roles;
+ 
+ @ManyToMany()
+	@JoinTable(name = "user_cart", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
+	private Set<Book> cart;
+ ```
+e Set<Book> cart;
+ ```
 ![RDBMS Diagram](https://user-images.githubusercontent.com/44520516/85909763-4bbd5000-b7d0-11ea-8e82-61bda7aee008.png)
 
