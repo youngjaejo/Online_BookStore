@@ -25,3 +25,4 @@ Security.
       
 # Reletional Database
   
+![RDBMS Diagram](https://user-images.githubusercontent.com/44520516/85909763-4bbd5000-b7d0-11ea-8e82-61bda7aee008.png)
