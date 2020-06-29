@@ -34,8 +34,9 @@ Security.
 	private Set<Role> roles;
  
  @ManyToMany()
-	@JoinTable(name = "user_cart", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
-	private Set<Book> cart;
+	@JoinTable(name = "user_cart", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private Set<User> cart;
+
  ```
 ![RDBMS Diagram](https://user-images.githubusercontent.com/44520516/85910272-c38c7a00-b7d2-11ea-96a0-95b641d56caa.png)
 
