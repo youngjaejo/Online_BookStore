@@ -22,7 +22,9 @@ Security.
    - Customer Side
    - localhost:8080/webHome/webMain
      - localhost:8080/webHome/{img_name} 
-     - localhost:8080/webHome/newC_web  
+     - localhost:8080/webHome/newC_web
+     - localhost:8080/webHome/cart
+     - localhost:8080/webHome/cart/{book_id}
   
   # Reletional Database
  Decleared joined tanble on backend server
