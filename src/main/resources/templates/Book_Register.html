@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Create New Book</title>
+<!-- link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" /-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #ededed;">
+	<div style="background-color: #337ab7; height: 50px;"></div>
+	<div class="container-fluid" style="margin-top: 30px;">
+
+		<div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
+			<form autocomplete="off" action="#" th:action="@{/save}" th:object="${book}" method="post" class="form-signin" role="form" enctype="multipart/form-data">
+				<h3 class="form-signin-heading">New Book</h3>
+				<div class="form-group">
+					<div class="">
+						<input type="text" th:field="*{isbn}" placeholder="ISBN Number" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="">
+						<input type="text" th:field="*{author}" placeholder="Author Name" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="">
+						<input type="text" th:field="*{price}" placeholder="Price" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="">
+						<input type="text" th:field="*{title}" placeholder="title" class="form-control" />
+					</div>
+				</div>
+                <div class="form-group">
+					<div class="">
+						<input type="text" th:field="*{category}" placeholder="category" class="form-control" />
+					</div>
+				</div>
+                   <div class="form-group">
+					<div class="">
+						<input type="file" th:filed="*{img_name}" name="file"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="">
+                        <button type="submit" class="btn btn-primary btn-block">Add Book</button>
+					</div>
+				</div>
+
+				<span th:utext="${successMessage}"></span>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+
+<!--!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Create New Product</title>
+</head>
+<body>
+<div align="center">
+    <h1>Book Manager</h1>
+    <br/>
+    <form action="#" th:action="@{/save}" th:object="${book}" method="post" enctype="multipart/form-data">
+        <table border="0" cellpadding="10">
+        
+            <tr>
+                <td>ISBN Number:</td>
+                <td><input type="text" th:field="*{isbn}" /></td>
+            </tr>
+            <tr>
+                <td>Author Name:</td>
+                <td><input type="text" th:field="*{author}" /></td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td><input type="text" th:field="*{price}" /></td>
+            </tr>
+            <tr>
+                <td>Title:</td>
+                <td><input type="text" th:field="*{title}" /></td>
+            </tr>
+            <tr>
+                <td>Category:</td>
+                <td><input type="text" th:field="*{category}" /></td>
+            </tr>
+            <tr>
+                <td><input type="file" th:filed="*{img_name}" name="file"/></td>
+             </tr>
+            <tr>
+                <td><a colspan="2"><button type="submit">Save</button></a></td>
+            </tr>
+
+        </table>
+    </form>  
+</div>
+</body>
+</html-->

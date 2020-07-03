@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Create New Product</title>
+</head>
+<body>
+    
+<div align="center">
+    <h1>Edit Book</h1>
+    <br/>
+    <form action="#" th:action="@{/save}" th:object="${book}" method="post" enctype="multipart/form-data">
+        <table border="0" cellpadding="10">
+
+            <tr>
+                <td>ID Number:</td>
+                <td><input type="text" th:field="*{id}" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>ISBN Number:</td>
+                <td><input type="text" th:field="*{isbn}" /></td>
+            </tr>
+            <tr>
+                <td>Author Name:</td>
+                <td><input type="text" th:field="*{author}" /></td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td><input type="text" th:field="*{price}" /></td>
+            </tr>
+            <tr>
+                <td>Title:</td>
+                <td><input type="text" th:field="*{title}" /></td>
+            </tr>
+            <tr>
+                <td>Title:</td>
+                <td><input type="text" th:field="*{category}" /></td>
+            </tr>
+            <tr>
+                <td><input type="file" name="file"/></td>
+             </tr>
+            
+            <tr>
+                
+                <td colspan="2"><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>  
+</div>
+</body>
+</html>

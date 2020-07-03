@@ -1,7 +1,7 @@
 package com.dev.backend.api;
 import com.dev.backend.model.User;
 import com.dev.backend.service.UserService;
-import com.dev.backend.dao.UserRepository;
+import com.dev.backend.repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,28 +17,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public abstract class UserController{
     @Autowired
-    private UserRepository dao;
+    private UserRepository userRepository;
     @Autowired
     private UserService userService;
    
     public String viewCustomPage(Model model)
     {
-      List<User> listUsers=(List<User>)dao.findAll();
+      List<User> listUsers=(List<User>)userRepository.findAll();
       System.out.println(listUsers.size());
       model.addAttribute("listUsers", listUsers);
-      return "user_main";
+      return "User_main";
     }
-    @RequestMapping("/newC")
+    @RequestMapping("/webUserRegester_main")
     public String showNewUserFrom(Model model){
       User customer=new User();
       model.addAttribute("user", customer);
-      return "customer_new";
+      return "User_Regester";
     }
-    @RequestMapping("/newU_admin")
+    @RequestMapping("/AdminUserRegester")
     public String showNewAdminUserFrom(Model model){
       User customer=new User();
       model.addAttribute("user", customer);
-      return "customer_new_admin";
+      return "User_Admin_Regester";
     }
     @RequestMapping(value="/register", method=RequestMethod.POST)
     public ModelAndView registerUser(@Valid User user, BindingResult bindingResult, ModelMap modelMap) {
@@ -58,7 +58,7 @@ public abstract class UserController{
        
       }
       modelAndView.addObject("user", new User());
-      modelAndView.setViewName("customer_new");
+      modelAndView.setViewName("User_Regester");
       return modelAndView;
     }
 
@@ -79,7 +79,7 @@ public abstract class UserController{
         modelAndView.addObject("successMessage", "User is registered successfully!");
       }
       modelAndView.addObject("user", new User());
-      modelAndView.setViewName("customer_new_admin");
+      // modelAndView.setViewName("customer_new_admin");
       return modelAndView;
     }
     @RequestMapping(value="/editUser", method=RequestMethod.POST)
@@ -94,23 +94,23 @@ public abstract class UserController{
       else {
         userService.saveUser(user);
         modelAndView.addObject("successMessage", "User is edited successfully!");
-       
+        
       }
       modelAndView.addObject("user", new User());
       modelAndView.setViewName("customer_new");
       return modelAndView;
     }
    
-    @RequestMapping("/editC/{user_id}")
+    @RequestMapping("/editUser/{user_id}")
     public ModelAndView showEditUserFrom(@PathVariable(name="user_id") int user_id){
       ModelAndView mav=new ModelAndView("customer_edit");
-      User user= dao.findById(user_id).get();
+      User user= userRepository.findById(user_id).get();
       mav.addObject("user", user);
       return mav;
     }
-    @RequestMapping("/deleteC/{user_id}")
+    @RequestMapping("/deleteUser/{user_id}")
     public String deleteUser(@PathVariable(name="user_id") int user_id){
-      dao.deleteById(user_id);
+      userRepository.deleteById(user_id);
       return "redirect:/main/customer";
     }
 
@@ -121,22 +121,31 @@ public abstract class UserController{
   } 
   @RequestMapping("/searchByemail")
   public ModelAndView searchByEmail(@RequestParam String keyword){
-    ModelAndView mav= new ModelAndView("user_search");
-    List<User> result=dao.findByEmails(keyword);
+    ModelAndView mav= new ModelAndView("User_search");
+    List<User> result=userRepository.findByEmails(keyword);
     mav.addObject("result", result);
     return mav;
   }
   @RequestMapping("/searchByLName")
+  public ModelAndView searchByLName(@RequestParam String keyword){
+    ModelAndView mav= new ModelAndView("User_search");
+    List<User> result=userRepository.findByLName(keyword);
+    
+    mav.addObject("result", result);
+    return mav;
+  }
+  @RequestMapping("/searchByFName")
   public ModelAndView searchByFName(@RequestParam String keyword){
-    ModelAndView mav= new ModelAndView("user_search");
-    List<User> result=dao.findByLName(keyword);
+    ModelAndView mav= new ModelAndView("User_search");
+    List<User> result=userRepository.findByFName(keyword);
+    
     mav.addObject("result", result);
     return mav;
   }
   @RequestMapping("/searchByRole")
   public ModelAndView searchByRole(@RequestParam String keyword){
-    ModelAndView mav= new ModelAndView("user_search");
-    List<User> result=dao.findByRoles(keyword);
+    ModelAndView mav= new ModelAndView("User_search");
+    List<User> result=userRepository.findByRoles(keyword);
   
     mav.addObject("result", result);
     return mav;

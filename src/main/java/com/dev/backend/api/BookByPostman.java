@@ -2,7 +2,7 @@ package com.dev.backend.api;
 
 import com.dev.backend.model.Book;
 
-import com.dev.backend.dao.BookDao;
+import com.dev.backend.repository.BookRepository;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,40 +28,40 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class BookByPostman{
 
     @Autowired
-    private BookDao dao;
+    private BookRepository bookRepository;
     //For Postman
     @PostMapping("/addBook")
     @ResponseBody
     public String addAll(@RequestBody List<Book> Books){
-        dao.saveAll(Books);
+        bookRepository.saveAll(Books);
         return "person size:"+ Books.size();
 
     }
-    @GetMapping("/getBook")
+    @GetMapping("/postman/getBook")
     @ResponseBody
   public List<Book> getBook(){
-      return (List<Book>) dao.findAll();
+      return (List<Book>) bookRepository.findAll();
   }
-  @GetMapping(path="{id}")
+  @GetMapping(path="/postman/{id}")
   @ResponseBody
   public Optional<Book> getBookbyid(@PathVariable("id") int id){
     ArrayList<Book> result=new ArrayList<>();
-    dao.findById(id).ifPresent(result::add);
+    bookRepository.findById(id).ifPresent(result::add);
     
-    return dao.findById(id);
+    return bookRepository.findById(id);
   }
-  @DeleteMapping(path="{id}")
+  @DeleteMapping(path="/postman{id}")
   @ResponseBody
   public void deleteBookById(@PathVariable("id") int id){
-      dao.deleteById(id);
+      bookRepository.deleteById(id);
   }
-  @PutMapping("/put/{id}")
+  @PutMapping("/postman/put/{id}")
   @ResponseBody
   public void putBookById(@PathVariable("id") int id, @Valid @NonNull @RequestBody Book bookToUpdate) {
    
     
     bookToUpdate.setId(id);
-    dao.save(bookToUpdate);
+    bookRepository.save(bookToUpdate);
   }
   
 }

@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import com.dev.backend.model.Book;
 import com.dev.backend.model.Role;
 import com.dev.backend.model.User;
-import com.dev.backend.dao.UserRepository;
-import com.dev.backend.dao.RoleRepository;
+import com.dev.backend.repository.UserRepository;
+import com.dev.backend.repository.RoleRepository;
 
 
 @Service
@@ -42,14 +42,7 @@ public class UserServiceImp implements UserService {
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
 	}
-	@Override
-	public void saveAtCart(User user,Book book) {
-		System.out.println(user.getEmail());
-		System.out.println(book.getTitle());
-		user.setCart((new HashSet<Book>(Arrays.asList(book))));
-		userRepository.save(user);
-		
-	}
+
 	@Override
 	public boolean isUserAlreadyPresent(User user) {
 	

@@ -1,5 +1,5 @@
 package com.dev.backend.service;
-
-public class BookService {
-    
+import com.dev.backend.model.*;
+public interface BookService {
+    public void saveAtCart(User user,Book book);
 }

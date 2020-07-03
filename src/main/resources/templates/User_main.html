@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="ISO-8859-1">
+
+    <title>Customer Manager</title>
+   <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    </head>
+<body>
+
+    <div align="left">
+
+        <div>   
+            <div align= "right">   
+             <a class="simpleButton" href="toMain">Back To Main</a>
+             </div>
+            <h1>
+            <div >
+                <class="create">Customer Manager
+                
+               
+                
+            </div> 
+        </h1>
+        
+        
+        <div class="create">
+         
+            
+            <form id="search" method="get" >
+                <a href="webUserRegester_main">Create New User</a>
+                <a href="AdminUserRegester">Create New Admin User</a>
+                &nbsp;
+                <select onchange="selected(this.value)">
+                    <option value="search_by" >Search by</option>
+                    <option value="email" >email</option>
+                    <option value="fisrtName" >fisrtName</option>
+                    <option value="lastName">lastName</option>
+                    <option value="userRole">userRole</option>
+                </select>
+                <td><input type="text" name="keyword"/></td>
+                <button type="submit" >Search</button>
+            </form>
+        </div>
+         <script>
+              function selected(s){
+                if (s=='email'){
+                 document.getElementById('search').action = "searchByemail"; 
+                }
+                else if(s=='fisrtName')
+                    {document.getElementById('search').action = "searchByFName"; }
+                 else if(s=='lastName')
+                     {document.getElementById('search').action = "searchByLName"; }
+                 else if(s=='userRole')
+                 {document.getElementById('search').action = "searchByRole"; }
+                }
+            </script>
+
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>User Role</th>
+                    
+                </tr>
+        
+            </thead>
+                <tbody>
+                    <tr th:each ="listUsers : ${listUsers}">
+                        <td th:text="${listUsers.id}">ID</td>
+                        <td th:text="${listUsers.email}">Email</td>
+                        <td th:text="${listUsers.firstName}">First Name</td>
+                        <td th:text="${listUsers.lastName}">Last Name</td>
+                        <td th:text="${listUsers.roles}">roles</td>
+                        <td>
+                            
+                            <a th:href="@{'/editUser/'+${listUsers.id}}">Edit</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a th:href="@{'/deleteUser/'+${listUsers.id}}">delete</a>
+                   
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

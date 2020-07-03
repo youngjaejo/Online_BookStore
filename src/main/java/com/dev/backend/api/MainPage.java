@@ -12,7 +12,7 @@ public class MainPage extends BookController{
     @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("login"); // resources/template/login.html
+		modelAndView.setViewName("Login"); // resources/template/login.html
 		return modelAndView;
 	}
     @RequestMapping("/mainpage")

@@ -1,6 +1,6 @@
 package com.dev.backend.api;
 import com.dev.backend.model.Book;
-import com.dev.backend.dao.BookDao;
+import com.dev.backend.repository.BookRepository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,23 +19,23 @@ import org.springframework.web.multipart.MultipartFile;
 public class BookController extends UserController{
   public static String uploadDirectory= System.getProperty("user.dir") +"/backend/src/main/resources/static/images"; 
     @Autowired
-    private BookDao dao;
+    private BookRepository bookRepository;
     
     
     public String viewHomePage(Model model)
     {
-     List<Book> listBooks=(List<Book>)dao.findAll();
+     List<Book> listBooks=(List<Book>)bookRepository.findAll();
       
       model.addAttribute("listBook", listBooks);
      
-     return "book_main";
+     return "Book_main";
     }
-    @RequestMapping("/new")
+    @RequestMapping("/addNewBook")
     public String showNewBookFrom(Model model){
       Book book=new Book();
       
       model.addAttribute("book", book);
-      return "book_new";
+      return "Book_Register";
     }
 
     @RequestMapping(value = "/save",method=RequestMethod.POST)
@@ -51,7 +51,7 @@ public class BookController extends UserController{
           stream.close();
  
           book.setImg_name(fileName);
-          dao.save(book);
+          bookRepository.save(book);
         }
         catch(Exception e){
           return "redirect:/main/book";
@@ -62,59 +62,52 @@ public class BookController extends UserController{
         
         return "redirect:/main/book";
     }
-    /*
-    @PostMapping("/file/upload")
-    @ResponseBody
-    public String upload(@RequestParam("file") MultipartFile file ){
-      System.out.println(file.getOriginalFilename()
-    return "fileupload";
-    }
-    */
+
     
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/editBook/{id}")
     public ModelAndView showEditBookFrom(@PathVariable(name="id") int id){
-      ModelAndView mav=new ModelAndView("book_edit");
-      Book book= dao.findById(id).get();
+      ModelAndView mav=new ModelAndView("Book_edit");
+      Book book= bookRepository.findById(id).get();
       mav.addObject("book", book);
       return mav;
     }
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("/deleteBook/{id}")
     public String deleteBook(@PathVariable(name="id") int id){
-      dao.deleteById(id);
+      bookRepository.deleteById(id);
       return "redirect:/main/book";
     }
     @RequestMapping("/searchByBook")
     public ModelAndView searchByBook(@RequestParam String keyword){
-      ModelAndView mav= new ModelAndView("book_search");
-      List<Book> result=dao.searchByBook(keyword);
+      ModelAndView mav= new ModelAndView("Book_search");
+      List<Book> result=bookRepository.searchByBook(keyword);
       mav.addObject("result", result);
       return mav;
     }
     @RequestMapping("/searchByIsbn")
     public ModelAndView searchByIsbn(@RequestParam String keyword){
       ModelAndView mav= new ModelAndView("book_search");
-      List<Book> result=dao.searchByIsbn(keyword);
+      List<Book> result=bookRepository.searchByIsbn(keyword);
       mav.addObject("result", result);
       return mav;
     }
     @RequestMapping("/searchByTitle")
     public ModelAndView searchByTitle(@RequestParam String keyword){
       ModelAndView mav= new ModelAndView("book_search");
-      List<Book> result=dao.searchByTitle(keyword);
+      List<Book> result=bookRepository.searchByTitle(keyword);
       mav.addObject("result", result);
       return mav;
     }
     @RequestMapping("/searchByCategory")
     public ModelAndView searchByCategory(@RequestParam String keyword){
       ModelAndView mav= new ModelAndView("book_search");
-      List<Book> result=dao.searchByCategory(keyword);
+      List<Book> result=bookRepository.searchByCategory(keyword);
       mav.addObject("result", result);
       return mav;
     }
     @RequestMapping("/searchByAuthor")
     public ModelAndView searchByAuthor(@RequestParam String keyword){
       ModelAndView mav= new ModelAndView("book_search");
-      List<Book> result=dao.searchByAuthor(keyword);
+      List<Book> result=bookRepository.searchByAuthor(keyword);
       mav.addObject("result", result);
       return mav;
     }

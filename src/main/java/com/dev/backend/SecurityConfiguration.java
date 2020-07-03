@@ -42,16 +42,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests()
-				// URLs matching for access rights
-				
 				.antMatchers("/webHome/**").permitAll()
 				.antMatchers("/main/login").permitAll()
 				.antMatchers("/register").permitAll()
-				//.antMatchers("/webHome/newC_web").hasAnyAuthority("SUPER_USER", "ADMIN_USER", "SITE_USER")
+				.antMatchers("/postman/**").permitAll()
 				.antMatchers("/main/mainpage/**").hasAnyAuthority("SUPER_USER","ADMIN_USER")
 				.anyRequest().authenticated()
 				.and()
-				// form login
+			
 				.csrf().disable().formLogin()
 				.loginPage("/main/login")
 				.failureUrl("/main/login?error=true")
@@ -59,10 +57,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.usernameParameter("email")
 				.passwordParameter("password")
 				.and()
-				// logout
+	
 				.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/").and()
+				.logoutSuccessUrl("/webHome/webMain").and()
 				.exceptionHandling()
 				.accessDeniedPage("/access-denied");
 	}

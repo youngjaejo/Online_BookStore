@@ -1,0 +1,109 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="ISO-8859-1">
+
+    <title>YJ BOOK STORE</title>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    </head>
+    <body>
+       <header>
+        
+        <div class="nav-belt">
+            <div class="nav-left">
+                <h1>YJ BOOK STORE</h1>
+            </div>
+             <div class="dropdown">
+                <p id="name" class="dropbtn"></p>
+                <div id="sign"class="dropdown-content">
+                                    
+                                    <!--a href="/main/login">Sign in</a>
+                                    <a href="newC_web">Create Account</a>
+                                    <a href="/logout">Log Out</a-->
+                </div>
+            </div>
+            <div class="nav-searchbar">
+                <form id="search" method="get">      
+                    &nbsp;&nbsp;        
+                    <select onchange="selected(this.value)">
+                        <option value="search_by" >Search by</option>
+                        <option value="isbn" >ISBN</option>
+                        <option value="author" >Author</option>
+                        <option value="title">Title</option>
+                        <option value="category">Category</option>
+                    </select>                   
+                    <input type="text" name="keyword"/>
+                    <input type="submit" name="Search" value="Search"/>                           
+                </form>
+            </div>    
+
+        </div>
+            
+               
+        
+
+    </header>
+        
+        
+
+                
+                
+                <br><br><br>
+                <div th:each="book: ${listBook}" align="center" > 
+                    <div id="div1">
+            
+                        <img width="250" height="350" th:src="@{'/images/'+${book.img_name}}"/>
+                
+                    </div>
+                    <div id="div2" align="left" class="Top"> 
+                        <h1 >
+                            <td  th:text="${book.title}"/>
+                        </h1>
+                    
+                        <p class="bookPage1">by <td th:text="${book.Author}"/></p>
+                        <p><font size="5.5">price: $<td th:text="${book.Price}"/></font></p>
+                        <div class="form-group">
+                            <a id="bEvent" class="simpleButton"> <input type="button" value="Buy"></a>
+                            <a id="bEvent2" class="simpleButton"> <input type="button" value="add"></a>
+                        
+                        </div>
+                        <p id="msg"></p>
+                        <p id="msg2"></p>
+
+                </div>
+            
+       
+                    <script th:inline="javascript">
+    
+                       
+                        var book1 = /*[[${listBook.id}]]*/; 
+                        var user=/*[[${user_name}]]*/
+
+                     
+                        if(user!=null){
+                            document.getElementById("name").innerHTML = "Hello, "+ user;
+                            document.getElementById("sign").innerHTML = "<a href='/main/login'>User information</a>"+
+                                                                        "<a href='cart'>Shopping Cart</a>"+ 
+                                                                        "<a href='/logout'>Log Out</a>";
+                            document.getElementById("bEvent2").addEventListener("click", function() 
+                            {location.href = "/webHome/cart/"+book1;});
+                            }    
+                            
+    
+                        else if(user==null){
+                            document.getElementById("name").innerHTML = "Hello, Sign in";
+                            document.getElementById("sign").innerHTML = "<a href='/main/login'>Sign in</a>"+
+                                                                        "<a href='newC_web'>Create Account</a>";
+                            document.getElementById("bEvent").addEventListener("click", function()
+                            {document.getElementById("msg").innerHTML = "Please Login First";});
+                            document.getElementById("bEvent2").addEventListener("click", function()
+                            {document.getElementById("msg2").innerHTML = "Please Login First";});
+                        }
+                        
+                  
+                    </script>
+                </div> 
+            </div>   
+        </div>
+    </body>
+</html>

@@ -22,7 +22,6 @@ public class Role {
 	private String desc;
 
 	Role(){
-	
 		
 	}
 	public int getId() {
