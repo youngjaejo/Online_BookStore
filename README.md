@@ -44,14 +44,14 @@ URLs
      - localhost:8080/webHome/cart
      - localhost:8080/webHome/cart/{book_id}
 # Model View Contrl(MVC) 
-  - Models
-   ![model](https://user-images.githubusercontent.com/44520516/86445586-825f0300-bcc7-11ea-91ed-17d28634c3ee.jpg)
-  - Repositories
-   ![repositories](https://user-images.githubusercontent.com/44520516/86446150-63ad3c00-bcc8-11ea-9277-7c83a77d47b3.jpg)
-  - Services
-   ![service](https://user-images.githubusercontent.com/44520516/86446220-83446480-bcc8-11ea-97ae-386fbf1a64db.jpg)
-  - view
-   ![view](https://user-images.githubusercontent.com/44520516/86446253-8c353600-bcc8-11ea-8bb2-e610990c454d.jpg)
+  - Models\
+     ![model](https://user-images.githubusercontent.com/44520516/86445586-825f0300-bcc7-11ea-91ed-17d28634c3ee.jpg)
+  - Repositories\
+     ![repositories](https://user-images.githubusercontent.com/44520516/86446150-63ad3c00-bcc8-11ea-9277-7c83a77d47b3.jpg)
+  - Services\
+     ![service](https://user-images.githubusercontent.com/44520516/86446220-83446480-bcc8-11ea-97ae-386fbf1a64db.jpg)
+  - View\
+     ![view](https://user-images.githubusercontent.com/44520516/86446253-8c353600-bcc8-11ea-8bb2-e610990c454d.jpg)
 
   # Reletional Database
  Decleared joined tanble on backend server
@@ -84,8 +84,8 @@ public interface BookDao extends JpaRepository<Book, Integer> {
 ![RDBMS Diagram](https://user-images.githubusercontent.com/44520516/85910272-c38c7a00-b7d2-11ea-96a0-95b641d56caa.png)
 
 
- # Spring Boot Security
+ <!--- # Spring Boot Security
  
   ```properties
   	
-  ```
+  ``` --->
