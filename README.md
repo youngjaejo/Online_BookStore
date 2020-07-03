@@ -45,10 +45,13 @@ URLs
      - localhost:8080/webHome/cart/{book_id}
 # Model View Contrl(MVC) 
   - Models
-    - Book.java
-    - User.java
-    - Role.java
-    - Cart.java
+   ![model](https://user-images.githubusercontent.com/44520516/86445586-825f0300-bcc7-11ea-91ed-17d28634c3ee.jpg)
+  - Repositories
+   ![repositories](https://user-images.githubusercontent.com/44520516/86446150-63ad3c00-bcc8-11ea-9277-7c83a77d47b3.jpg)
+  - Services
+   ![service](https://user-images.githubusercontent.com/44520516/86446220-83446480-bcc8-11ea-97ae-386fbf1a64db.jpg)
+  - view
+   ![view](https://user-images.githubusercontent.com/44520516/86446253-8c353600-bcc8-11ea-8bb2-e610990c454d.jpg)
 
   # Reletional Database
  Decleared joined tanble on backend server
