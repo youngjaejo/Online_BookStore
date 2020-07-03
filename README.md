@@ -27,7 +27,7 @@ URLs
        - localhost:8080/main/searchByemail?keyword= //from use input
        - localhost:8080/main/searchByFName?keyword= //from use input
        - localhost:8080/main/searchByLName?keyword= //from use input
-       - localhost:8080/main/searchByRole?keyword= /from use input
+       - localhost:8080/main/searchByRole?keyword= //from use input
        - localhost:8080/editUser/{user_id}
        - localhost:8080/deleteUser/{user_id}
      - localhost:8080/main/book
