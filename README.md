@@ -6,6 +6,7 @@
     - Thymeleaf
     - Spring security
     - Spring Data JPA
+    - HTML5
     - CSS
  - Mysql
  - VS Code
