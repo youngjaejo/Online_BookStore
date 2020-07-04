@@ -79,7 +79,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
  the Query to search books in cart.
   ```java
 @Repository
-public interface BookDao extends JpaRepository<Book, Integer> {
+public interface BookRepository extends JpaRepository<Book, Integer> {
     @Query(value="select c from Book c inner join c.cart t on t.id=?1")
     public List<Book> findBookInCart(int keyword);
 } 
