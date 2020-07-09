@@ -52,7 +52,7 @@
                 <div th:each="book: ${listBook}" align="center" > 
                     <div id="div1">
             
-                        <img width="250" height="350" th:src="@{'/images/'+${book.img_name}}"/>
+                        <img width="250" height="350" th:src="@{'https://elasticbeanstalk-us-west-1-338406428407.s3-us-west-1.amazonaws.com/image/'+${book.img_name}}"/>
                 
                     </div>
                     <div id="div2" align="left" class="Top"> 

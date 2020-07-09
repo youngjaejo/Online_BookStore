@@ -79,7 +79,7 @@ public abstract class UserController{
         modelAndView.addObject("successMessage", "User is registered successfully!");
       }
       modelAndView.addObject("user", new User());
-      // modelAndView.setViewName("customer_new_admin");
+      modelAndView.setViewName("User_Admin_Regester");
       return modelAndView;
     }
     @RequestMapping(value="/editUser", method=RequestMethod.POST)

@@ -45,7 +45,7 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 		// check user role and decide the redirect URL
 		if (roles.contains("ADMIN_USER") || roles.contains("SUPER_USER")) {
 			url = "/main/mainpage";
-		} 
+		}  
 		else if (roles.contains("SITE_USER")) {
 			url = "/webHome/webMain";
 		}

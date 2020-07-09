@@ -90,7 +90,7 @@
                         <td th:text="${book.price}">Price</td>
                         <td th:text="${book.title}">Title</td>
                         <td th:text="${book.category}">Category</td>
-                        <td><img width="100" height"100" th:src="@{'/images/'+${book.img_name}}"/></td>
+                        <td><img width="100" height"100" th:src="@{'https://elasticbeanstalk-us-west-1-338406428407.s3-us-west-1.amazonaws.com/image/'+${book.img_name}}"/></td>
                         <td th:text="${book.quantity}">Quabtity</td>
                         <td>
                             <a th:href="@{'/editBook/'+${book.id}}">Edit</a>
