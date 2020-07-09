@@ -9,8 +9,9 @@
     - HTML5
     - CSS
  - AWS 
-  - Elest
-  - RDS(Mysql)
+   - Elastic Beanstakl
+   - RDS(Mysql)
+   - S3
  - VS Code
 
 # Online BookStore
