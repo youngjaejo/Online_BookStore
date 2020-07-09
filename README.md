@@ -34,7 +34,7 @@ URLs
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/main/searchByRole?keyword= //from use input
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/editUser/{user_id}
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/deleteUser/{user_id}
-     - elastic beanstalkmain/book
+     - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/main/book
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/main/addNewBook
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/searchByIsbn?keyword= //from use input
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/searchByAuthor?keyword= //from use input
