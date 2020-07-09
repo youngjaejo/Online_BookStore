@@ -22,10 +22,10 @@ Security.
 URLs
  - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/main/login
  - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/logout
+   
    - Admin Side
    - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/main/mainpage
-     - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com//main/book
-     - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com//main/customer
+     - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/main/customer
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/main/AdminUserRegester
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/webUserRegester_main
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/main/searchByemail?keyword= //from use input
@@ -34,7 +34,7 @@ URLs
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/main/searchByRole?keyword= //from use input
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/editUser/{user_id}
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/deleteUser/{user_id}
-     - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/main/book
+    - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/main/book
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/main/addNewBook
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/searchByIsbn?keyword= //from use input
        - http://book-env.eba-bq9p8mb5.us-west-1.elasticbeanstalk.com/searchByAuthor?keyword= //from use input
